@@ -12,7 +12,8 @@ namespace DEFC.Util.DataValidationExamples
         {            
             // Ask the user to choose an option.
             Console.WriteLine("Choose an option from the following list:");
-            Console.WriteLine("1 For Data type validation \t 2 For Comparison Validation \t 3 For Password Validation"); 
+            Console.WriteLine("1 For Data type validation \t 2 For Comparison Validation \t 3 For Password Validation");
+            Console.WriteLine("4 For Math validation \t 5 For RegularExpression Validation \t 6 For SQLInjection Validation");
             StartRound("Y");
 
         }
@@ -44,14 +45,24 @@ namespace DEFC.Util.DataValidationExamples
             switch (ValidationType)
             {
                 case 1:
-                    DTValidator _DTValidator = new DTValidator();
+                    DataTypeValidator _DTValidator = new DataTypeValidator();
                     _DTValidator.Validat(val);
                     break;
                 case 2:
-                    Console.WriteLine($"Wait for 2 CODE");
+                    Console.WriteLine($"Wait for Comparison CODE");
                     break;
                 case 3:
-                    Console.WriteLine($"Wait for 3 CODE");
+                    Console.WriteLine($"Wait for Password CODE");
+                    break;
+                case 4:
+                    MathValidator _MDValidator = new MathValidator();
+                    _MDValidator.Validat(val);
+                    break;
+                case 5:
+                    Console.WriteLine($"Wait for RegularExpression CODE");
+                    break;
+                case 6:
+                    Console.WriteLine($"Wait for SQLInjection CODE");
                     break;
                 default:
                     Console.WriteLine($"Your choice is out of process");
