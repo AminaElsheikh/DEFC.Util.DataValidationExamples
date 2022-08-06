@@ -1,9 +1,6 @@
 ﻿using DEFC.Util.DataValidation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic; 
 
 namespace DEFC.Util.DataValidationExamples
 {
@@ -11,7 +8,7 @@ namespace DEFC.Util.DataValidationExamples
     {
         public void Validat(string val)
         {
-            Console.WriteLine($"--------------{val}-------------------");
+            Console.WriteLine($"--------------Value to chack: {val}-------------------");
             if (DataType.IsDouble(val))
             {
                 var _MathDataValidator = new MathDataValidator();
@@ -19,25 +16,12 @@ namespace DEFC.Util.DataValidationExamples
 
                 foreach (var message in messages)
                     if (message.ValidFun(Convert.ToDouble(val)))
-                        Console.WriteLine($"{message.DataType} ===> " + message.ValidMessage);
+                        Console.WriteLine($"{message.CheckType} ===> " + message.ValidMessage);
                     else
-                        Console.WriteLine($"{message.DataType} ===> " + message.InValidMessage);
-
-                Console.WriteLine("Want to check another value(Y/N)");
-                if (Console.ReadLine().ToLower() == "y")
-                {
-                    Console.WriteLine("Enter value to validate: ");
-                    val = Console.ReadLine();
-                    Validat(val);
-                    Console.ReadLine();
-                }
-
+                        Console.WriteLine($"{message.CheckType} ===> " + message.InValidMessage);
             }
             else
                  Console.WriteLine($"Value must be Number");
-
-
-
         }
     }
     class MathDataValidator : ValidatorBase<double>
@@ -47,11 +31,11 @@ namespace DEFC.Util.DataValidationExamples
             get
             {
                 Rule[] R = new Rule[] {
-                new Rule {DataType="IsZero", ValidFun = new Func<double,bool>(fun => DataValidation.Math.IsZero(fun)), InValidMessage = "No",ValidMessage = "Yes" },
-                new Rule {DataType="IsPositive", ValidFun = new Func<double,bool>(fun => DataValidation.Math.IsPositive(fun)), InValidMessage = "No",ValidMessage = "Yes" },
-                new Rule {DataType="IsNegative", ValidFun = new Func<double,bool>(fun => DataValidation.Math.IsNegative(fun)), InValidMessage = "No",ValidMessage = "Yes" },
-                new Rule {DataType="IsEven", ValidFun = new Func<double,bool>(fun => DataValidation.Math.IsEven(fun)), InValidMessage = "No",ValidMessage = "Yes" },
-                new Rule {DataType="IsOdd", ValidFun = new Func<double,bool>(fun => DataValidation.Math.IsOdd(fun)), InValidMessage = "No",ValidMessage = "Yes" },
+                new Rule {CheckType="Is a Zero", ValidFun = new Func<double,bool>(fun => DataValidation.Math.IsZero(fun)), InValidMessage = "No",ValidMessage = "Yes" },
+                new Rule {CheckType="Is a Positive", ValidFun = new Func<double,bool>(fun => DataValidation.Math.IsPositive(fun)), InValidMessage = "No",ValidMessage = "Yes" },
+                new Rule {CheckType="Is a Negative", ValidFun = new Func<double,bool>(fun => DataValidation.Math.IsNegative(fun)), InValidMessage = "No",ValidMessage = "Yes" },
+                new Rule {CheckType="Is an Even", ValidFun = new Func<double,bool>(fun => DataValidation.Math.IsEven(fun)), InValidMessage = "No",ValidMessage = "Yes" },
+                new Rule {CheckType="Is an Odd", ValidFun = new Func<double,bool>(fun => DataValidation.Math.IsOdd(fun)), InValidMessage = "No",ValidMessage = "Yes" },
               };
                 return R;
             }

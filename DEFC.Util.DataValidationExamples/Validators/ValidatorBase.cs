@@ -10,7 +10,7 @@ namespace DEFC.Util.DataValidationExamples
     {
         public class Rule
         {
-            public string DataType { get; set; }
+            public string CheckType { get; set; }
             public Func<T, bool> ValidFun { get; set; }
             public string ValidMessage { get; set; }
             public string InValidMessage { get; set; }
