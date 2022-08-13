@@ -1,4 +1,5 @@
-﻿using System; 
+﻿using DEFC.Util.DataValidation;
+using System; 
 using System.Text.RegularExpressions; 
 
 namespace DEFC.Util.DataValidationExamples
@@ -96,17 +97,39 @@ namespace DEFC.Util.DataValidationExamples
 
         private static void PasswordValidatorManager()
         {
-            PasswordValidator _RpasswordValidator = new PasswordValidator();
-            PasswordData _PasswordData = new PasswordData();
+            PasswordValidator _passwordValidator = new PasswordValidator();
             Console.WriteLine("Enter password to validate: ");
-            _PasswordData.password = Console.ReadLine();
+            string password = Console.ReadLine();
             Console.WriteLine("Enter confirm password: ");
-            _PasswordData.confirmPassword = Console.ReadLine();
-            Console.WriteLine("Enter password expected minimum length: ");
-            _PasswordData.passwordMinLength = Console.ReadLine();
-            Console.WriteLine("Enter symbols expected to be included in the password: ");
-            _PasswordData.symbols = Console.ReadLine();
-            _RpasswordValidator.Validat(_PasswordData);
+            string confirmPassword = Console.ReadLine();
+
+            _passwordValidator.ValidatConfirmPassword(password, confirmPassword);
+
+            PasswordRules _PasswordRules = new PasswordRules();
+            _PasswordRules.Password = password;
+            Console.WriteLine("Enter y for password upper case letters check(by default is false): ");
+            _PasswordRules.HasUpper = IsBoolean(Console.ReadLine());
+            Console.WriteLine("Enter y for password lower case letters check(by default is false): ");
+            _PasswordRules.HasLower = IsBoolean(Console.ReadLine());
+            Console.WriteLine("Enter y for password digits check(by default is false): ");
+            _PasswordRules.HasDigit = IsBoolean(Console.ReadLine());
+            Console.WriteLine("Enter y for password Length check(by default is false): ");
+            _PasswordRules.HasLength = IsBoolean(Console.ReadLine());            
+            if (_PasswordRules.HasLength)
+            {
+                Console.WriteLine("Enter password Length(by default is 0): ");
+                string length = Console.ReadLine();
+                if (DataType.IsInt(length))
+                    _PasswordRules.passwordMinLength =Convert.ToInt16(length);
+            }
+            Console.WriteLine("Enter y for password symbols check(by default is false): ");
+            _PasswordRules.HasSymbols = IsBoolean(Console.ReadLine());
+            if (_PasswordRules.HasSymbols)
+            {
+                Console.WriteLine("Enter symbols with comma separator: ");
+                _PasswordRules.symbols = Console.ReadLine();
+            }
+            _passwordValidator.ValidatPassword(_PasswordRules);
         }
 
         private static void ComparisonValidatorManager()
@@ -132,7 +155,12 @@ namespace DEFC.Util.DataValidationExamples
             }
             _ComparisonValidator.Validat(_ComparisonData, CountOfNumbersToCompare);
         }
-
+        private static bool IsBoolean(string r)
+        {
+            if (r.ToLower() == "y")
+                return true;
+            return false;
+        }
        
     }
 }
