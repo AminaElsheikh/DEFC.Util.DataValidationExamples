@@ -102,4 +102,5 @@ E:\GitHub Repo\DEFC.Util.DataValidationExamples\DEFC.Util.DataValidationExamples
 E:\GitHub Repo\DEFC.Util.DataValidationExamples\DEFC.Util.DataValidationExamples\bin\Debug\System.Xml.XPath.dll
 E:\GitHub Repo\DEFC.Util.DataValidationExamples\DEFC.Util.DataValidationExamples\bin\Debug\System.Xml.XPath.XDocument.dll
 E:\GitHub Repo\DEFC.Util.DataValidationExamples\DEFC.Util.DataValidationExamples\obj\Debug\DEFC.Util.DataValidationExamples.csproj.CopyComplete
-E:\GitHub Repo\DEFC.Util.DataValidationExamples\DEFC.Util.DataValidationExamples\obj\Debug\DEFC.Util.DataValidationExamples.csproj.AssemblyReference.cache
+E:\GitHub Repo\DEFC.Util.DataValidationExamples\DEFC.Util.DataValidationExamples\bin\Debug\DEFC.Util.DataValidation.dll
+E:\GitHub Repo\DEFC.Util.DataValidationExamples\DEFC.Util.DataValidationExamples\bin\Debug\DEFC.Util.DataValidation.xml

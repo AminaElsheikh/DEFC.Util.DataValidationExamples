@@ -16,7 +16,7 @@ namespace DEFC.Util.DataValidationExamples
                 Console.WriteLine("1 For data type validation \t 2 For comparison validation \t 3 For password validation");
                 Console.WriteLine("4 For math validation \t 5 For regularExpression validation \t 6 For SQLInjection validation");
 
-                Console.WriteLine("Your choosen option is: ");
+                Console.WriteLine("Your option is: ");
 
                 byte validationType = Convert.ToByte(Console.ReadLine());
 
